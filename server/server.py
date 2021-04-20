@@ -1,6 +1,5 @@
 # Python program to implement server side of chat room.
 import socket
-import select
 import sys
 import _thread
 
@@ -18,20 +17,22 @@ server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 #     exit()
 
 # takes the first argument from command prompt as IP address
-IP_address = str(sys.argv[1])
 
-if IP_address:
-    print("Connecting to ip " + IP_address)
+if len(sys.argv) > 1:
+    IP_address = str(sys.argv[1])
 else:
     IP_address = "127.0.0.1"
 
-# takes second argument from command prompt as port number
-Port = int(sys.argv[2])
+print("Connecting to ip " + IP_address)
 
-if Port:
-    print("Connecting to port " + str(Port))
+# takes second argument from command prompt as port number
+
+if len(sys.argv) > 2:
+    Port = int(sys.argv[2])
 else:
     Port = 21112
+
+print("Connecting to port " + str(Port))
 
 """
 binds the server to an entered IP address and at the
